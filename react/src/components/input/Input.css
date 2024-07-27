@@ -1,0 +1,114 @@
+.inputContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    padding: 5px 0;
+    /* width: 500px; */
+    border-bottom: 2px solid #eee;
+    width: 100%;
+}
+
+.inputError {
+    color: var(--error-color);
+}
+
+.inputSubmitBtn {
+    padding: 10px 30px;
+    background-color: var(--effect-color);
+    color: var(--text-color);
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.inputSubmitBtn:hover,
+.addImageInputBtn:hover {
+    font-weight: bold;
+    background-color: var(--light-color);
+}
+
+.addImageInputBtn {
+    background-color: var(--effect-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.disabledInputSumbitBtn {
+    padding: 10px 30px;
+    background-color: var(--back-color);
+    color: var(--text-color);
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    /* cursor: not-allowed; */
+    cursor: pointer;
+}
+
+.notfulldiv {
+    width: calc(100% - 4px);
+    display: flex;
+    justify-content: space-between;
+}
+
+.fulldiv {
+    width: 100%;
+}
+
+.disabledInput {
+    background-color: #eee;
+    cursor: not-allowed;
+    outline: 0;
+    border: none;
+    margin: auto;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.input {
+    background-color: darkgray;
+    width: 80%;
+    margin: auto;
+    padding: 5px 0;
+    font-weight: bold;
+    color: var(--text-color);
+    border-radius: 5px;
+    outline: none;
+    /* outline-color: red; */
+    border: 2px solid var(--effect-color);
+}
+
+.input:focus {
+    border: 3px solid var(--light-color);
+}
+
+.selectInput {
+    color: var(--effect-color);
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+}
+
+.fullWidth {
+    width: calc(100% - 4px);
+}
+
+.label {
+    display: block;
+}
+
+.labelContainer {
+    width: 20% !important;
+    color: var(--text-color);
+}
+
+@media (max-width: 800px) {
+    .inputContainer {
+        width: 350px;
+    }
+}
+@media (max-width: 480px) {
+    .inputContainer {
+        width: 300px;
+    }
+}

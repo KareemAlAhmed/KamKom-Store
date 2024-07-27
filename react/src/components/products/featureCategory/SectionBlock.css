@@ -1,0 +1,16 @@
+.featureSection{
+    width: 100%;
+}
+.listOfProducts{
+    display: flex;
+    gap: 20px;
+    position: relative;
+}
+.actions{
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    right: 0;
+    bottom: -20px;
+    gap: 10px;
+}

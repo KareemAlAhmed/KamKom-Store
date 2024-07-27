@@ -1,0 +1,16 @@
+.actions svg{
+    width: 10px;
+    height: 15px;
+    fill: white;
+}
+.owl-stage{
+    display: flex;
+    gap: 15px;
+}
+.specialProd .cart{
+    width: 100%;
+}
+
+.owl-item{
+    width: calc(1738px - 4%) !important;
+}

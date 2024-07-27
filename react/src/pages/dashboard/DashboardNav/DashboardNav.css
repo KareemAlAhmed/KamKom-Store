@@ -1,0 +1,48 @@
+
+
+.DashboardNav {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--cart-color);
+    height: fit-content;
+}
+
+.dashoardItem {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 10px 20px;
+    color: var(--text-color);
+}
+
+.selectedDashItem {
+    background-color: var(--effect-color) !important;
+}
+
+.dashoardItem:hover {
+    background-color: var(--light-color);
+    color: var(--text-color);
+
+}
+
+a {
+    border: none;
+    text-decoration: none;
+}
+
+@media (max-width: 1400px) {
+
+    .dashboardLink {
+        width: calc(100% / 3);
+    }
+    .dashoardItem {
+        padding: 0;
+    }
+    .DashboardNav {
+        display: flex;
+        flex-wrap: wrap;
+        width: 95%;
+        margin: 0 2.5%;
+    }
+}

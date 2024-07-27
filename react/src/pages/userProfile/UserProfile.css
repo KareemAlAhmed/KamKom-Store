@@ -1,0 +1,58 @@
+.UserProfile {
+    position: relative;
+    top: 100px;
+}
+
+.profileDetails {
+    display: flex;
+    justify-content: space-around;
+}
+
+.userProfileInfo1 {
+    width: 400px;
+    height: 400px;
+    text-align: center;
+    font-size: 50px !important;
+    color: var(--text-color);
+}
+
+.userProfileInfo1 img {
+    width: 350px;
+    height: 350px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.userProfileInfo1ul {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+li {
+    list-style-type: none;
+}
+
+.adminProfile,
+.clientProflie {
+    width: fit-content;
+    background-color: var(--light-color);
+    padding: 5px 10px;
+    color: var(--text-color);
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.clientProflie {
+    background-color: var(--cart-color);
+}
+
+.logoutBtn {
+    background-color: red;
+    padding: 5px 10px;
+    width: fit-content;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}

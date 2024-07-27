@@ -1,0 +1,80 @@
+.actions svg{
+    width: 10px;
+    height: 15px;
+    fill: white;
+}
+.owl-stage{
+    display: flex;
+    gap: 15px;
+}
+
+.owl-theme .card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: rgb(39, 40, 47);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    min-width: 15rem;
+    flex: 1;
+    padding-bottom: 0.5rem;
+    height: 100%;
+    cursor: pointer;
+  }
+  @media (max-width: 1400px) {
+     .owl-theme .card {
+      max-width: 16rem;
+    }
+  }
+  @media (max-width: 1200px) {
+     .owl-theme .card {
+      max-width: 100%;
+    }
+  }
+   .owl-theme .card .img-wrapper {
+    width: 100%;
+    height: 13rem;
+    border-radius: 0;
+  }
+   .owl-theme .card .img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+   .owl-theme .card .rate {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 0.64rem;
+    background-color: #2d2c34;
+    border-radius: 10px;
+    gap: 5px;
+    padding-inline: 0.5rem;
+  }
+   .owl-theme .card .card-info {
+    display: flex;
+    padding-inline: 0.5rem;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-around;
+    flex: 1;
+    font-size: 0.8rem;
+  }
+   .owl-theme .card  .card-info .title {
+    font-size: 0.88rem;
+  }
+   .owl-theme .card  .card-info .float-number {
+    font-size: 0.64rem;
+  }
+   .owl-theme .card  .card-info .subtitle {
+    font-size: 0.72rem;
+    color: #7d8093;
+    flex: 1;
+  }
+   .owl-theme .card  .card-info .subtitle span {
+    color: #0a5eb8;
+  }
+  

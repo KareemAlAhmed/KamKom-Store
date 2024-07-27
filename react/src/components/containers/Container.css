@@ -1,0 +1,13 @@
+.container {
+    /* max-width: 1264px; */
+    height: 100%;
+    background-color: inherit;
+    margin: 0 2%;
+    position: relative;
+}
+
+@media (max-width: 480px) {
+    .container {
+        margin: 0;
+    }
+}

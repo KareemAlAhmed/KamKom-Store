@@ -1,0 +1,488 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap");
+/*
+  1. Use a more-intuitive box-sizing model.
+  2.Remove default margin
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/*
+
+/*
+  3. Allow percentage-based heights in the application
+*/
+/* html, body {
+  height: 100vh;
+  width: 100vw;
+  background-color: #0c0c17;
+  font-family: "Cabin", sans-serif;
+  color: rgb(241, 241, 241);
+  overflow-x: hidden;
+}
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  display: none;
+} */
+
+/*
+  Typographic tweaks!
+  4. Add accessible line-height
+  5. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+  6. Improve media defaults
+*/
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/*
+  7. Remove built-in form typography styles
+*/
+input, button, textarea, select {
+  font: inherit;
+}
+
+/*
+  8. Avoid text overflows
+*/
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+a {
+  text-decoration: none;
+  /* color: #1c80eb; */
+}
+
+ul {
+  list-style: none;
+}
+
+.wrapper {
+  width: 96%;
+  margin-inline: auto;
+  transition: all 0.5s ease-in;
+  margin: 0 2%;
+}
+@media (max-width: 1200px) {
+  .wrapper {
+    width: 98%;
+  }
+}
+
+.overflow-h {
+  overflow-y: hidden;
+}
+
+.gap-2 {
+  gap: 1rem;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.blue-txt {
+  color: #0a5eb8;
+}
+
+.flex {
+  display: flex;
+  /* flex-wrap: wrap; */
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-line {
+  justify-content: baseline;
+}
+.self-center{
+  justify-self: center;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.icon {
+  color: #4d4f5d;
+  cursor: pointer;
+}
+
+
+
+.flex-1 {
+  flex-grow: 1;
+}
+
+
+
+.icon-wrapper {
+  background-color: #2d2c34;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  position: relative;
+  cursor: pointer;
+}
+.icon-wrapper .icon {
+  color: rgb(241, 241, 241);
+}
+.icon-wrapper:hover {
+  background-color: rgb(39, 40, 47);
+}
+.icon-wrapper .icon-tag {
+  position: absolute;
+  right: 0.6rem;
+  top: 0.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 100%;
+  border: 2px solid #2d2c34;
+  background-color: crimson;
+}
+
+
+
+
+
+
+.line-v {
+  width: 1px;
+  height: 50px;
+  display: block;
+  background-color: rgb(39, 40, 47);
+}
+
+.line-h {
+  border: 1px solid rgb(39, 40, 47);
+  width: 100%;
+  height: 1px;
+  display: block;
+  background-color: rgb(39, 40, 47);
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.h-full {
+  min-height: 100vh;
+}
+
+.obj-cover {
+  object-fit: cover;
+}
+
+.img-wrapper {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.menu-icon {
+  color: rgb(241, 241, 241);
+  font-size: 2.3rem;
+  display: none;
+  margin-right: 1rem;
+}
+
+.roter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.roter i:not(:last-child) {
+  color: #4d4f5d;
+  padding-top: 2px;
+}
+@media (max-width: 768px) {
+  .roter i:not(:last-child) {
+    display: none;
+  }
+}
+.roter p:not(:last-child) {
+  color: rgb(167, 167, 167);
+}
+@media (max-width: 768px) {
+  .roter p:not(:last-child) {
+    display: none;
+  }
+}
+.roter .icon i {
+  color: #fff;
+}
+
+select {
+  appearance: none;
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+  color: #4d4f5d;
+}
+
+.select-wrapper {
+  position: relative;
+}
+.select-wrapper .icon {
+  position: absolute;
+  top: 3px;
+  right: 10px;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.contact-btns {
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+.contact-btns .follow {
+  cursor: pointer;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  flex: 1;
+  align-items: center;
+  background-color: #1c80eb;
+  border-radius: 50px;
+  padding-inline: 1.5rem;
+  padding-block: 5px;
+}
+.contact-btns .follow:hover {
+  background-color: #1167c3;
+}
+.contact-btns .follow .icon {
+  color: white;
+  margin-top: 0.15rem;
+}
+.contact-btns .chat {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex: 1;
+  background-color: rgba(2, 62, 126, 0.1490196078);
+  border-radius: 50px;
+  padding-inline: 1.5rem;
+  border: 1px solid #0a5eb8;
+  padding-block: 5px;
+  color: #0a5eb8;
+}
+.contact-btns .chat:hover {
+  background-color: rgba(4, 111, 226, 0.1490196078);
+}
+.contact-btns .chat .icon {
+  color: #0a5eb8;
+  margin-top: 0.15rem;
+}
+
+.card-btn {
+  background-color: #0a5eb8;
+  color: rgb(241, 241, 241);
+  padding-inline: 0.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.card-btn:hover {
+  background-color: #074588;
+}
+
+header {
+  width: 100%;
+  min-height: 75px;
+  transition: all 0.5s ease-in;
+  /* background-color: #0c0c17; */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+/* @media (max-width: 768px) {
+  header {
+    min-height: 120px;
+  }
+} */
+
+.coin {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  background-color: rgba(102, 147, 194, 0.137254902);
+  color: #5ea8f8;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  align-items: center;
+}
+.coin .icon {
+  color: #5ea8f8;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  background-color: #2d2c34;
+  border-radius: 3rem;
+  color: rgb(241, 241, 241);
+  padding: 0.5rem 1rem;
+  margin-left: 1rem;
+  width: 20rem;
+  flex: 1;
+}
+@media (max-width: 768px) {
+  .search {
+    width: 100%;
+    margin-left: 0;
+    order: 10;
+  }
+}
+.search input {
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  flex: 1;
+  margin-left: 0.5rem;
+  color: rgb(241, 241, 241);
+}
+.search .icon:first-child {
+  color: rgb(241, 241, 241);
+}
+
+
+.dropdown-submenu {
+  position: relative;
+  padding: 0 ;
+}
+
+.dropdown-submenu> a:after {
+  content: ">";
+  float: right;
+}
+
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: 0px;
+  margin-left: 0px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-menu{
+  background:var(--hover2-blue);
+    box-shadow: 0px 10px 30px 0px rgba(82, 63, 105, 0.05);
+    transition: all linear 0.3s;
+    position: absolute;
+    width: 100%;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    display: none;
+    top: calc(100% - 4px);
+    left: 0;
+    right: 0;
+}
+/* .dropdown-menu{
+  display: none;
+  top: calc(100% - 4px);
+    left: 0;
+    right: 0;
+    font-size: 14px !important;
+} */
+.MenuItem:hover .mainMenu{
+  display: block;
+}
+.userInfos{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  position: relative;
+}
+.userMenu{
+  top: calc(100% + 1px) !important;
+  border-radius: 5px;
+  right: -30px;
+  width: fit-content;
+  left: initial;
+}
+
+.userIN{
+  cursor: pointer;
+  width: fit-content;
+  
+}
+
+.userIN li{
+  padding: 0;
+  border-radius: 5px;
+}
+.userIN li button{
+  border-radius: 5px;
+  width: 100%;
+}
+
+.dropdown-submenu .dropdown-item{
+  width: 100%;
+  display: block;
+  padding: 14px;
+}
+.subitem .dropdown-item{
+  display: block;
+  padding: 0;
+}
+.addToWish{
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 0.64rem;
+    background-color: #2d2c34;
+    border-radius: 10px;
+    gap: 5px;
+    padding-inline: 0.5rem;
+    z-index: 9;
+    cursor: pointer;
+}

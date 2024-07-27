@@ -1,0 +1,11 @@
+.clearsection{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 70px;
+    margin-right: 2%;
+}
+.clearsection button{
+    background-color: var(--love-color) !important;
+    font-weight: 600;
+}

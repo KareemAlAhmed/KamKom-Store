@@ -1,0 +1,27 @@
+.blockTitle{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.sectionTitle{
+    font-weight: 700;
+    font-size: 23px;
+    border-bottom: 2px solid rgb(255 253 253 / 18%);
+    padding-bottom: 7.5px;
+}
+.browseMore{
+    font-weight: 700;
+    font-size: 23px;
+    color: var(--browse-color);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-bottom: 2px solid var(--browse-color);
+    padding-bottom: 7.5px;
+}
+.browseMore svg{
+    width: 25px;
+    height: 25px;
+    fill: var(--browse-color);
+}

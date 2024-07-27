@@ -1,0 +1,26 @@
+.authPage {
+    position: relative;
+    top: 100px;
+    width: 100%;
+    padding-bottom: 50px;
+}
+
+.toggleAuth {
+    display: flex;
+    justify-content: center;
+}
+
+.toggleAuth span {
+    color: var(--effect-color);
+}
+
+.toggleAuth span:hover {
+    color: var(--light-color);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.submitBtn {
+    display: flex;
+    justify-content: center;
+}

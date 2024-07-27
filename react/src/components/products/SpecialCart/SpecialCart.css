@@ -1,0 +1,36 @@
+.specialCart{
+    width: 100vw;
+    background-color: var(--cart-color);
+    height: 500px;
+    display: flex;
+}
+.specialCart2{
+    width: 100vw;
+    background-color: blue;
+    height: 500px;
+}
+.specialCart img{
+    width: 50vw !important;
+    height: 100%;
+}
+.specialCart .prodInfo{
+    width: 50vw !important;
+    height: 100%;
+    padding: 20px 80px 20px 20px;
+    color: white;
+}
+.specialCart .prodInfo h2,.cateName{
+    color: #0a5eb8;
+}
+.price{
+    font-size: 24px;
+    font-weight: 700;
+}
+.description,.cate{
+    font-weight: 700;
+    font-size: 24px;
+}
+.prodInfo button{
+    font-weight: 700;
+    margin-top: 15px;
+}

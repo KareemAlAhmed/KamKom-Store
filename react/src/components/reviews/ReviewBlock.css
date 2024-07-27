@@ -1,0 +1,142 @@
+.reviewLists{
+    display: flex;
+    flex-direction: column;
+}
+.reviewBlock {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 2%;
+}
+.reviewBlock .addReview{
+    width: 100%;
+    display: flex;
+    gap: 15px;
+}
+.reviewBlock .allReviews{
+    width: 100%;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+}
+.reviewBlock .allReviews .review{
+    width: 100%;
+    display: flex;
+    gap: 15px;
+    border-bottom: 2px solid rgb(255 253 253 / 18%);
+    padding-bottom: 20px;
+}
+.reviewBlock .userAvatar,.reviewBlock .allReviews .review .userAvatar{
+    width: 75px;
+}
+.reviewBlock .addReview img,.reviewBlock .allReviews .review .userAvatar img{
+    width: 100%;
+    height: 75px;
+    border-radius: 100px;
+}
+.reviewBlock .reviewContent{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.reviewBlock .allReviews .review .reviewContent{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+.reviewBlock .allReviews .review .reviewContent p{
+    font-size: 24px;
+}
+.reviewBlock .reviewContent button{
+    width: fit-content;
+    align-self: flex-end;
+}
+.reviewBlock .reviewContent textarea{
+    height: 75px;
+    resize: none;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 2px 5px;
+    font-weight: 600;
+}
+.reviewBlock .reviewContent .rate{
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    background-color: #2d2c34;
+    border-radius: 10px;
+    gap: 5px;
+    padding-inline: 0.5rem;
+    width: fit-content;
+}
+.starNb{
+    background-color: transparent;
+    border: none;
+    color: white;
+    width: 25px;
+    text-align: center;
+    cursor: pointer;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.userNameAndRate{
+    display: flex;
+    font-weight: 600;
+    gap: 10px;
+}
+.userNameAndRate p{
+    font-size: 20px !important;
+}
+.revOtherOpt{
+    align-self: center;
+    margin-left: auto;
+    cursor: pointer;
+    position: relative;
+}
+.revOpt{
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+   
+}
+.revOtherOpt .otherOpt{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    right: 100%;
+    top: 0;
+    transition: all 0.3s ease;
+}
+.revOtherOpt .otherOpt button{
+    width: 100%;
+    border-radius: 0;
+}
+.revOtherOpt .otherOpt button:first-child{
+    border-bottom: 1px solid var(--light-color);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.revOtherOpt .otherOpt button:last-child{
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.displayed{
+    display: flex !important;
+
+}
+.editRev{
+    margin: 15px 0;
+}

@@ -1,0 +1,89 @@
+--User
+    Post :"api/register" : to create a user . the request should contain the following :
+        [
+            firstName: minLength=3,
+            secondName: minLength=3,
+            bio: minLength=15,
+            email: unique|minLength=7,
+            password: minLength=5,
+            mobile_number: string|minLength=6,
+            country: minLength=3,
+            streetAddress: string|minLength=18,
+            province: minLength=4,
+            city: minLength=3,
+            zipcode: minLength=2,
+            image_url: optional|minLength=3,
+            company_name: optional|minLength=4,
+            company_business: optional|minLength=4,
+        ]
+        if it successed it will return data of type json , exp:
+        {
+            "message": "User created successfully",
+            "user": [
+                {
+                    "firstName": "karim",
+                    "secondName": "ahmad",
+                    "bio": "hello i am karim amer ahmad i am student at lebanese university of lebanon",
+                    "email": "karimahmad@gmail.com",
+                    "mobile_number": "+961/812581365",
+                    "country": "lebanon",
+                    "streetAddress": "lebanon,tripoli,beb el ramel",
+                    "province": "north",
+                    "city": "tripoli",
+                    "zipcode": "1300",
+                    "image_url": image.png,
+                    "email_verified_at": "2024-03-03T17:27:08.000000Z",
+                    "updated_at": "2024-03-03T17:27:08.000000Z",
+                    "created_at": "2024-03-03T17:27:08.000000Z",
+                    "id": 8
+                },
+                "2|mcHP60htW5OkkfrsGTEOsZYFUfeHOpuVrApAHaxD5e25bf2c"
+                ]
+        }
+        otherwize it will return :
+        {
+            "status": 402,
+            "error": {
+                "email": [
+                    "The email has already been taken."
+                ]
+            }
+        }
+
+    Post : "api/login": to login a user . the request should contain the following :
+        [
+            email,
+            password 
+        ]
+        if the login successed it will return the following :
+        {
+            "message": "You login successfully",
+            "user": [
+                        {
+                            "id": 1,
+                            "firstName": "karim",
+                            "secondName": "ahmad",
+                            "bio": "hello i am karim amer ahmad i am student at lebanese university of lebanon",
+                            "email": "karimamer@gmail.com",
+                            "email_verified_at": "2024-03-02T17:09:14.000000Z",
+                            "mobile_number": "+961/81258136",
+                            "country": "lebanon",
+                            "streetAddress": "lebanon,tripoli,beb el ramel , abre l zeini street",
+                            "province": "north",
+                            "city": "tripoli",
+                            "zipcode": 1300,
+                            "image_url": null,
+                            "blocked_user": null,
+                            "company_name": null,
+                            "company_business": null,
+                            "created_at": "2024-03-02T17:09:14.000000Z",
+                            "updated_at": "2024-03-02T17:09:14.000000Z"
+                        },
+                        "4|foqON80BWFbhtH4OH29n3sgNyZdSJM3mSYt4xktoe2d317b2"
+                    ]
+        }
+        otherwize it will return :
+        {
+            "status": 402,
+            "error": "Your credentials are incorrect."
+        }

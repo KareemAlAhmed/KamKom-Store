@@ -1,0 +1,38 @@
+.formContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 600px;
+    background-color: var(--middle-color);
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 50px 5px 50px 5px;
+}
+
+.closeIcon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: red;
+    cursor: pointer;
+}
+
+h1 {
+    text-align: center;
+}
+
+.formContainer div {
+    /* padding: 10px; */
+}
+
+@media (max-width: 800px) {
+    .formContainer {
+        width: 400px;
+    }
+}
+@media (max-width: 480px) {
+    .formContainer {
+        width: 350px;
+    }
+}

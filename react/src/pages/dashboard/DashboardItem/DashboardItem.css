@@ -1,0 +1,68 @@
+.dashboardTable {
+    position: relative;
+}
+
+.dashboardTable table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+td {
+    padding: 5px 0;
+    border-bottom: 1px solid var(--text-color);
+}
+
+tr:hover {
+    background-color: var(--light-color);
+    cursor: pointer;
+}
+
+.slider {
+    color: grey;
+    background-color: var(--cart-color);
+}
+
+.noMoreItem,
+.selectedSlider {
+    background-color: var(--light-color);
+    color: var(--text-color);
+}
+
+.lastRow {
+    position: relative;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.lastRowPart {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.lastRowPart div {
+    padding: 10px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dashBtn:hover {
+    background-color: var(--dark-color);
+}
+
+h5 {
+    font-size: 25px;
+    margin: 0;
+}
+
+@media (max-width: 480px) {
+    .notImp {
+        display: none;
+    }
+    h5 {
+        font-size: 12px;
+    }
+}
