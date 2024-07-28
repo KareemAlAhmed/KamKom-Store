@@ -146,7 +146,7 @@ export default function NavItem(props) {
     </ul>
   </Link>
   : 
-  <Link to={"/"+props.to+"/results"} className="MenuItem" onClick={event=>getSectionProds(props.type,event)}>
+  <Link to={props.to == "Home"? "/" :"/"+props.to+"/results"} className="MenuItem" onClick={event=>getSectionProds(props.type,event)}>
   <div className="btn btn-primary dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" >{props.type}</div>
       </Link>
 

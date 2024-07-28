@@ -11,6 +11,8 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../../../redux/user/userAction";
 import { Bounce, toast } from "react-toastify";
+import { height } from "@fortawesome/free-regular-svg-icons/faAddressBook";
+import { FETCH_CATEGORY_RANDOM_PRODS, FETCH_HOTDEALS_PRODS, FETCH_LATEST_PRODS } from "../../../redux/product/productAction";
 const Navbar = () => {
     const [productToSearchOn, setProductToSearchOn] = useState("");
     const navigate = useNavigate();
@@ -77,37 +79,33 @@ const Navbar = () => {
         });
         navigate("/")
     }
-    // block.addEventListener("mouseenter", () => {
-    //     const dropdownMenu = block.querySelector(".dropdown-menu");
-    
+    const getSectionProds=(type)=>{
+      const checkbox = document.getElementById('hamburg');
+      checkbox.checked = false;
+      stopScroll()
+      switch(type){
+          case "Categories":
+            dispatch(FETCH_CATEGORY_RANDOM_PRODS())
+            sessionStorage.getItem("currentFiler") == null ? null : sessionStorage.removeItem("currentFiler")
+            break;
+            case "Latest":
+              dispatch(FETCH_LATEST_PRODS())
+              sessionStorage.getItem("currentFiler") == null ? null : sessionStorage.removeItem("currentFiler")
+              break;
+            case "Hot Deals":
+              dispatch(FETCH_HOTDEALS_PRODS())
+              sessionStorage.getItem("currentFiler") == null ? null : sessionStorage.removeItem("currentFiler")
+              break;
+          default:
+            return null;
+      }
 
-    //     if (dropdownMenu) {
-    //       dropdownMenu.classList.add("open"); // Use classList for modern approach
-    //       dropdownMenu.style.opacity = 0; // Set initial opacity for smooth fade-in
-    //       dropdownMenu.classList.remove("hidden"); // Avoid potential display issues
-    
-    //       dropdownMenu.addEventListener("transitionend", () => {
-    //         if (dropdownMenu.classList.contains("open")) {
-    //           dropdownMenu.style.opacity = 1; // Set final opacity after transition
-    //         }
-    //       });
-    //     }
-    //   });
-    
-    //   block.addEventListener("mouseleave", () => {
-    //     const dropdownMenu = block.querySelector(".dropdown-menu");
-    //     if (dropdownMenu) {
-    //       dropdownMenu.classList.remove("open");
-    //       dropdownMenu.style.opacity = 1; // Set initial opacity for smooth fade-out
-    //       dropdownMenu.addEventListener("transitionend", () => {
-    //         if (!dropdownMenu.classList.contains("open")) {
-    //           dropdownMenu.style.opacity = 0; // Hide menu after transition
-    //           dropdownMenu.classList.add("hidden"); // Optionally hide for better accessibility
-    //         }
-    //       });
-    //     }
-    //   });
+    }
 
+    const stopScroll=()=>{
+      let body=document.querySelector("body")
+      body.classList.toggle("stopScroll")
+    }
     return (
       
         <header className="header flex items-center nav">
@@ -120,7 +118,7 @@ const Navbar = () => {
       <div className="navItem navItemAndMenu">
                          <div className="navMenu btn-group">
                                 {navItems.map((e,Index)=>{
-                                  return <NavItem to={e == 'Home' ? "" : e[0].toLowerCase() + e.slice(1)} type={e} key={Index} dropMenu={e =='Categories' ? true : false} />
+                                  return <NavItem to={e == 'Home' ? "Home" : e[0].toLowerCase() + e.slice(1)} type={e} key={Index} dropMenu={e =='Categories' ? true : false} />
                                 })}
                                 
                         </div>
@@ -206,7 +204,23 @@ const Navbar = () => {
                 }   
              
         </div>
-        <span className="menu-icon"><i className="bi bi-list"></i></span>
+        {/* <span className="menu-icon"><i className="bi bi-list"></i></span> */}
+        
+        <nav className="menu--right mobileVisible" role="navigation">
+          <div className="menuToggle">
+            <input type="checkbox" id="hamburg" onChange={stopScroll}/>
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul className="menuItem">
+              <li><Link to="/" onClick={()=>{stopScroll}}>Home</Link></li>
+              <li><Link to="/cart" onClick={()=>{stopScroll}}>Cart</Link></li>
+              <li><Link to="/hot Deals/results" onClick={(e)=>{e.preventDefault(),getSectionProds("Hot Deals"),navigate("/hot%Deals/results")}}>Hot Deals</Link></li>
+              <li><Link to="/categories/results" onClick={(e)=>{e.preventDefault(),getSectionProds("Categories"),navigate("/categories/results")}}>Categories</Link></li>
+              <li><a href="#">Show me more</a></li>
+            </ul>
+          </div>
+        </nav>
       </div>
 
     </div>

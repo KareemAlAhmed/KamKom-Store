@@ -17,6 +17,7 @@
     align-items: center;
     background-color: var(--dark-color);
     margin: 0 2%;
+    row-gap: 10px;
 }
 
 .footer-logo img {

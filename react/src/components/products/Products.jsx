@@ -21,7 +21,7 @@ const Products = () => {
 
     return (
 
-            <div className="products">
+            <div className="products mobileVerProd">
 
                 <SectionBlock for="home" type="NEW PRODUCTS" prods={newestProds} />
                 <SectionBlock for="home" type="LATEST PRODUCTS" prods={latestProds}/>

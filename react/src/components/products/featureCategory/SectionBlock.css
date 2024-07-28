@@ -14,3 +14,14 @@
     bottom: -20px;
     gap: 10px;
 }
+@media (max-width: 480px) {
+    .owl-dots{
+        display: none;
+    }
+    .actions{
+        bottom: -40px;
+    }
+    .listOfProducts .owl-item{
+        width: 360px !important;
+    }
+}

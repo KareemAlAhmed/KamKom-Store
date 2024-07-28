@@ -4,7 +4,7 @@ import "./Banner.css";
 
 const Banner = () => {
     return (
-        <div className="Banner">     
+        <div className="Banner BannerMob ">     
                 <div className="bannerContainer">
                     <Slider />
                 </div>

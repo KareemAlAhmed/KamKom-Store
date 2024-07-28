@@ -24,4 +24,11 @@
         width: 46%;
         margin: 2%;
     }
+    .mobileVerProd{
+        margin-top: 90px;
+    }
+    .sectionTitle{
+        margin: 0;
+        padding-bottom: 12.5px;
+    }
 }

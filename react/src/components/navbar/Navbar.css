@@ -189,4 +189,7 @@
     header h2{
         font-size: 28px;
     }
+    .mobileVisible{
+        display: block !important;
+    }
 }
