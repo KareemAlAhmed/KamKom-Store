@@ -66,6 +66,9 @@ h4 {
     h4 {
         font-size: 18px;
     }
+    form{
+      font-size: 17px;
+    }
 }
 
 @media only screen and (max-width: 480px) {
@@ -76,7 +79,7 @@ h4 {
     h2,
     h3,
     h4 {
-        font-size: 14px;
+        font-size: 25px;
     }
 }
 .loading{
@@ -159,3 +162,178 @@ box-shadow: 10014px 0 0 2px;
 box-shadow: 10014px 0 0 -5px;
 }
 }
+.menuToggle {
+    display: block;
+    position: relative;
+    top: 27px;
+    z-index: 1;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  .menuToggle a {
+      text-decoration: none;
+      color: white;
+      transition: all 0.3s ease;
+      
+    }
+    .menuToggle a:hover {
+      color: tomato;
+    }
+  
+    .menuToggle #hamburg {
+      display: block;
+      width: 40px;
+      height: 32px;
+      position: absolute;
+      top: -7px;
+      cursor: pointer;
+      opacity: 0; /* hide this */
+      z-index: 2; /* and place it over the hamburger */
+      -webkit-touch-callout: none;
+    }
+    .menuToggle .hamburg {
+      position: relative;
+      display: block;
+      width: 33px;
+      height: 4px;
+      margin-bottom: 5px;
+      position: relative;
+      background: #cdcdcd;
+      border-radius: 3px;
+      z-index: 1;
+      transform-origin: 4px 0px;
+      transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                  background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                  opacity 0.55s ease;
+    }
+      .menuToggle:first-child {
+        transform-origin: 0% 0%;
+      }
+      .menuToggle:nth-last-child(2) {
+        transform-origin: 0% 100%;
+      }
+    
+  
+  
+  
+      .menuToggle #hamburg:checked ~ span {
+        opacity: 1;
+        transform: rotate(45deg) translate(0px, -1px);
+        background: white;
+     }
+      .menuToggle #hamburg:checked ~ span:nth-last-child(3) {
+        opacity: 0;
+        transform: rotate(0deg) scale(0.2, 0.2);
+     }
+      .menuToggle #hamburg:checked ~ span:nth-last-child(2) {
+        transform: rotate(-45deg) translate(0, -1px);
+     }
+      .menuToggle #hamburg:checked ~ .menuItem {
+        transform: none;
+     }
+      
+  
+     .menuItem {
+      position: absolute;
+      width: calc(100vw + 35px);
+      padding: 50px;
+      padding-top: 125px;
+      background: var(--back-color);
+      list-style-type: none;
+      -webkit-font-smoothing: antialiased;
+      transform-origin: 0% 0%;
+      transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+      min-height: calc(100vh + 50px);
+   }
+    .menuItem li {
+      padding: 10px 0;
+      font-size: 22px;
+   }
+    
+   .menu--right-nav .menuToggle {
+    position: fixed;
+  
+  }
+  .menu--right-nav .menuToggle input {
+    right: 50px;
+  }
+  .menu--right-nav .menuToggle span {
+    right: 35px;
+  }
+  .menu--right-nav .menuItem {
+    right: 0;
+    margin: -100px 0 0 0;
+    transform: translate(100%, 0);
+  }
+  .menu--right-nav .menuItem li a:hover {
+    padding-left: 5px;
+  }
+  .stopScroll{
+      height:100%;
+      overflow:hidden
+  }
+  .menu--right-filter .menuToggle {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    top: 13px;
+  }
+  .menu--right-filter .menuToggle #hamburg {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: -24px;
+  }
+  .menu--right-filter .menuToggle .hamburg {
+    right: 0;
+    position: absolute;
+    left: 0;
+  }
+  .menu--right-filter .menuToggle .hamburg:nth-child(2){
+    top: 0px;
+    
+  }
+  .menu--right-filter .menuToggle #hamburg:checked ~ .hamburg:nth-child(2) {
+    transform: rotate(47deg) translate(2px, -1px) !important;
+  }
+  .menu--right-filter .menuToggle .hamburg:nth-child(3){
+    top: 10px;
+  }
+  .menu--right-filter .menuToggle .hamburg:nth-child(4){
+    top: 20px;
+  }
+  .menu--right-filter .menuItem {
+   
+
+
+    right: -25px;
+    /* margin: -100px 0 0 0; */
+    transform: translate(-100%, 0);
+    /* left: 0; */
+    top: 100%;
+    padding-left: 82px;
+    padding-top: 20px;
+    z-index: 10;
+
+  }
+  .menu--right-filter .menuItem li a:hover {
+    padding-left: 5px;
+  }
+
+  @keyframes text-slide-in {
+    0% {
+      -webkit-transform: translateX(100px);
+      -moz-transform: translateX(100px);
+      -ms-transform: translateX(100px);
+      -o-transform: translateX(100px);
+      transform: translateX(100px)
+    }
+  
+    100% {
+      -webkit-transform: translateY(0);
+      -moz-transform: translateY(0);
+      -ms-transform: translateY(0);
+      -o-transform: translateY(0);
+      transform: translateY(0)
+    }
+  }

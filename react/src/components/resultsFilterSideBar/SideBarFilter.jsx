@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FETCH_CATEGORY_PRODS, getCategoryProductsSucceed } from "../../../redux/product/productAction";
-import { useNavigate, useNavigation, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function SideBarFilter() {
   const display = useParams()?.subitem;
@@ -138,9 +138,7 @@ export default function SideBarFilter() {
           lowToHight: true
         }}))
 
-        console.log("checked")
       dispatch(getCategoryProductsSucceed(filteredProd,true))
-      console.log("checked1")
 
     }else{
       sessionStorage.removeItem("currentFiler","lowToHighPrice")

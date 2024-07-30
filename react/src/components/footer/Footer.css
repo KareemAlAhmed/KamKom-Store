@@ -64,3 +64,11 @@
     font-size: 30px;
     transition: 0.3s;
 }
+@media (max-width: 480px) {
+    .contact-info{
+        font-size: 14px;
+    }
+    .footerUl li{
+        font-size: 18px;
+    }
+}

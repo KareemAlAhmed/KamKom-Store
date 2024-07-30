@@ -16,8 +16,9 @@
   }
   @media (max-width: 768px) {
     .filter {
-      max-width: 8rem;
-      padding-left: 0.5rem;
+      /* max-width: 8rem;
+      padding-left: 0.5rem; */
+      display: none;
     }
   }
   .filter .filter-wrapper {
@@ -406,7 +407,12 @@
   @media (max-width: 768px) {
     .main {
       padding-right: 1.2rem;
+      border-left: none;
     }
+    /* .wrapper{
+      margin: 0;
+      width: 100%;
+    } */
   }
   .filterOptions{
     display: flex;
@@ -451,4 +457,70 @@
     font-size: 18px;
     background-color: transparent;
     border: 2px solid white;
+  }
+
+
+  .filterMobileVersion {
+    position: sticky;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding-block: 0.5rem;
+    max-width: 12rem;
+    max-height: 600px;
+    width: 100%;
+    transition: all 0.5s ease-in;
+    overflow-y: scroll;
+  }
+  .filterMobileVersion::-webkit-scrollbar {
+    display: none;
+  }
+  @media (max-width: 768px) {
+    .filterMobileVersion {
+      /* max-width: 8rem;
+      padding-left: 0.5rem; */
+
+    }
+  }
+  .filterMobileVersion .filter-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .filterMobileVersion .filter-wrapper .title {
+    cursor: pointer;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  .filterMobileVersion .filter-wrapper .title span {
+    display: block;
+    padding-top: 0.5rem;
+  }
+  .filterMobileVersion .filter-wrapper .title.clicked ~ .items {
+    display: none;
+  }
+  .filterMobileVersion .filter-wrapper .title.clicked ~ a {
+    display: none;
+  }
+  .filterMobileVersion .filter-wrapper .items {
+    transition: all 0.5s ease-in;
+    transform: translateY(0px);
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.96rem;
+    color: #929292;
+  }
+  .filterMobileVersion .filter-wrapper a {
+    color: #5ea8f8;
+    display: flex;
+    align-items: center;
+    font-size: 0.768rem;
+    cursor: pointer;
+  }
+  .filterMobileVersion .filter-wrapper a i {
+    padding-top: 0.15rem;
   }

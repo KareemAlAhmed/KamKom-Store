@@ -38,9 +38,13 @@ const userReducer=(state=initalState,action)=>{
                 ...state,
                 loading:false,
                 currentUser:action.payload.user,
-                currentUserId:action.payload.user.id
+                currentUserId:action.payload.user[0].id,
                 // userCart:action.payload.cart,
                 // userWishlist:action.payload.wishlist,
+ 
+                userCart:action.payload.cart,
+                allProds:action.payload.allProds
+
             }
         case REGISTERING_USER_FAILED:
             return {

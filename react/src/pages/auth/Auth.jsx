@@ -55,18 +55,24 @@ const Auth = () => {
         },
         onSubmit: (values) => {
             if (isUserRegister) {
-                if (!sessionStorage.getItem("image_uploaded")) {
-                    // setImageError(true);
-                    return;
-                }
+                // if (!sessionStorage.getItem("image_uploaded")) {
+                //     // setImageError(true);
+                //     return;
+                // }
 
                 dispatch(
-                    registerUSer({
+                    sessionStorage.getItem("image_uploaded") !=null ?
+                   ( registerUSer({
                         ...values,
                         image_url: sessionStorage.getItem("image_uploaded"),
-                    })
+                    }) ,sessionStorage.removeItem("image_uploaded"))
+                    
+                    : 
+                    registerUSer({
+                        ...values,
+                    }) 
                 );
-                sessionStorage.removeItem("image_uploaded");
+                
                 toast.success("Welcome User.", {
                     position: "top-right",
                     autoClose: 3000,

@@ -73,11 +73,7 @@ ul {
   transition: all 0.5s ease-in;
   margin: 0 2%;
 }
-@media (max-width: 1200px) {
-  .wrapper {
-    width: 98%;
-  }
-}
+
 
 .overflow-h {
   overflow-y: hidden;
@@ -212,7 +208,6 @@ ul {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 100%;
-  overflow: hidden;
 }
 
 .menu-icon {
@@ -225,24 +220,31 @@ ul {
 .roter {
   display: flex;
   align-items: center;
+  /* justify-content: space-between; */
   gap: 10px;
 }
 .roter i:not(:last-child) {
   color: #4d4f5d;
   padding-top: 2px;
 }
+.introduct{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 @media (max-width: 768px) {
-  .roter i:not(:last-child) {
-    display: none;
+  .roter {
+    font-size: 16px;
   }
+
 }
 .roter p:not(:last-child) {
   color: rgb(167, 167, 167);
 }
 @media (max-width: 768px) {
-  .roter p:not(:last-child) {
+  /* .roter p:not(:last-child) {
     display: none;
-  }
+  } */
 }
 .roter .icon i {
   color: #fff;
@@ -449,7 +451,7 @@ header {
 .userIN{
   cursor: pointer;
   width: fit-content;
-  
+  border-radius: 100%;
 }
 
 .userIN li{
@@ -485,139 +487,20 @@ header {
     border-radius: 10px;
     gap: 5px;
     padding-inline: 0.5rem;
-    z-index: 9;
+    /* z-index: 9; */
     cursor: pointer;
 }
-
-
-
-
-
-.menuToggle {
-  display: block;
-  position: relative;
-  top: 27px;
-  z-index: 1;
-  -webkit-user-select: none;
-  user-select: none;
+.userInfoMobile{
+  display: flex;
+  width: 100%;
 }
-.menuToggle a {
-    text-decoration: none;
-    color: white;
-    transition: all 0.3s ease;
-    
-  }
-  .menuToggle a:hover {
-    color: tomato;
-  }
-
-  .menuToggle input {
-    display: block;
-    width: 40px;
-    height: 32px;
-    position: absolute;
-    top: -7px;
-    cursor: pointer;
-    opacity: 0; /* hide this */
-    z-index: 2; /* and place it over the hamburger */
-    -webkit-touch-callout: none;
-  }
-  .menuToggle span {
-    position: relative;
-    display: block;
-    width: 33px;
-    height: 4px;
-    margin-bottom: 5px;
-    position: relative;
-    background: #cdcdcd;
-    border-radius: 3px;
-    z-index: 1;
-    transform-origin: 4px 0px;
-    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                opacity 0.55s ease;
-  }
-    .menuToggle:first-child {
-      transform-origin: 0% 0%;
-    }
-    .menuToggle:nth-last-child(2) {
-      transform-origin: 0% 100%;
-    }
-  
-
-
-
-    .menuToggle input:checked ~ span {
-      opacity: 1;
-      transform: rotate(45deg) translate(0px, -1px);
-      background: white;
-   }
-    .menuToggle input:checked ~ span:nth-last-child(3) {
-      opacity: 0;
-      transform: rotate(0deg) scale(0.2, 0.2);
-   }
-    .menuToggle input:checked ~ span:nth-last-child(2) {
-      transform: rotate(-45deg) translate(0, -1px);
-   }
-    .menuToggle input:checked ~ .menuItem {
-      transform: none;
-   }
-    
-
-   .menuItem {
-    position: absolute;
-    width: calc(100vw + 35px);
-    padding: 50px;
-    padding-top: 125px;
-    background: var(--back-color);
-    list-style-type: none;
-    -webkit-font-smoothing: antialiased;
-    transform-origin: 0% 0%;
-    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-    min-height: calc(100vh + 50px);
- }
-  .menuItem li {
-    padding: 10px 0;
-    font-size: 22px;
- }
-  
- .menu--right .menuToggle {
-  position: fixed;
-
+.userInfoMobile img{
+  width: 50px !important;
 }
-.menu--right .menuToggle input {
-  right: 50px;
-}
-.menu--right .menuToggle span {
-  right: 35px;
-}
-.menu--right .menuItem {
-  right: 0;
-  margin: -100px 0 0 0;
-  transform: translate(100%, 0);
-}
-.menu--right .menuItem li a:hover {
-  padding-left: 5px;
-}
-.stopScroll{
-    height:100%;
-    overflow:hidden
+.userInfoMobile p{
+  color: var(--blue-color);
+  font-weight: 600;
+  font-size: 25px;
 }
 
-@keyframes text-slide-in {
-  0% {
-    -webkit-transform: translateX(100px);
-    -moz-transform: translateX(100px);
-    -ms-transform: translateX(100px);
-    -o-transform: translateX(100px);
-    transform: translateX(100px)
-  }
 
-  100% {
-    -webkit-transform: translateY(0);
-    -moz-transform: translateY(0);
-    -ms-transform: translateY(0);
-    -o-transform: translateY(0);
-    transform: translateY(0)
-  }
-}

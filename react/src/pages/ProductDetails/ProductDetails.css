@@ -165,9 +165,9 @@ button:hover {
 }
 @media (max-width: 480px) {
     button {
-        padding: 5px 10px !important;
-        font-size: 12px;
-        width: 50%;
+
+        font-size: 17px;
+
     }
     .button:hover {
         font-size: 1.05rem;
@@ -176,13 +176,22 @@ button:hover {
         height: 250px;
     }
     .productDetailsPage {
-        margin: 0;
-        padding: 10px;
+        margin: 20px 10px;
+        padding: 10px 2%;
     }
     .productImages,
     .productImg,
     .prodcutDetails {
-        width: 100%;
-        margin: 5px 0;
+        width: 100% !important;
+        margin: 10px 0;
     }
+    .productAllImages{
+        margin-right: 0;
+        margin-bottom: 0;
+        width: 100% !important;
+    }
+    .prodcutDetails h1,.prodcutDetails .prodDesc{
+        font-size: 23px;
+    }
+    
 }

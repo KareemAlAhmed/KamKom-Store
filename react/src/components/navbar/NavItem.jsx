@@ -1,11 +1,11 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FETCH_CATEGORY_PRODS, FETCH_CATEGORY_RANDOM_PRODS, FETCH_HOTDEALS_PRODS, FETCH_LATEST_PRODS } from '../../../redux/product/productAction';
 
 export default function NavItem(props) {
     const btnGroupDropdownElements = document.querySelectorAll(".MenuItem ");
-    let products=null
+
   const dispatch=useDispatch();
     btnGroupDropdownElements.forEach(element => {
       element.addEventListener("mouseenter", () => {
@@ -95,7 +95,7 @@ export default function NavItem(props) {
       sessionStorage.getItem("currentFiler") == null ? null : sessionStorage.removeItem("currentFiler")
       sessionStorage.setItem("intendentValue",Index)
     }
-    const getSectionProds=(type,event)=>{
+    const getSectionProds=(type)=>{
 
       switch(type){
           case "Categories":
@@ -122,7 +122,7 @@ export default function NavItem(props) {
         <ul className="dropdown-menu mainMenu" role="menu" aria-labelledby="dropdownMenu">
         {
           
-          list.map((e,Index)=>{
+          list.map((e)=>{
             return(
               // <li key={Index}><a className="dropdown-item" href="#">{e.name}</a></li>
               <li className="dropdown-submenu" key={e.id} onClick={(event)=>newNavigation(e.id,event)}>

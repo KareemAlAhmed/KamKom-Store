@@ -16,8 +16,9 @@
   }
   @media (max-width: 768px) {
     .filter {
-      max-width: 8rem;
-      padding-left: 0.5rem;
+      /* max-width: 8rem;
+      padding-left: 0.5rem; */
+      display: none;
     }
   }
   .filter .filter-wrapper {
@@ -308,6 +309,7 @@
     height: 500px;
     gap: 0.8rem;
   }
+ 
   .products-wrapper::-webkit-scrollbar {
     display: none;
   }
@@ -331,6 +333,29 @@
   @media (max-width: 1200px) {
     .products-wrapper .card {
       max-width: 100%;
+    }
+  }
+  @media (max-width: 480px) {
+    .userImg{
+      height: 200px;
+    }
+    .channel__name{
+      font-size: 22px !important;
+    }
+    .resume{
+      font-size: 15px;
+    }
+    .contact-btns{
+      margin-top: 0;
+    }
+    .mainUser .roter{
+      justify-content: flex-start;
+    }
+    .tabs{
+      font-size: 15px;
+    }
+    .roter + div{
+      flex-direction: column;
     }
   }
   .products-wrapper .card .img-wrapper {

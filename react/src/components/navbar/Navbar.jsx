@@ -11,7 +11,6 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../../../redux/user/userAction";
 import { Bounce, toast } from "react-toastify";
-import { height } from "@fortawesome/free-regular-svg-icons/faAddressBook";
 import { FETCH_CATEGORY_RANDOM_PRODS, FETCH_HOTDEALS_PRODS, FETCH_LATEST_PRODS } from "../../../redux/product/productAction";
 const Navbar = () => {
     const [productToSearchOn, setProductToSearchOn] = useState("");
@@ -141,7 +140,7 @@ const Navbar = () => {
         <span className="icon"><i className="bi bi-sliders"></i></span>
       </div>
      
-      <div className="coin mobileVer http://localhost:3000">
+      <div className="coin mobileVer">
         <span className="icon">
           
           <i className="bi bi-currency-exchange"></i>
@@ -204,20 +203,36 @@ const Navbar = () => {
                 }   
              
         </div>
-        {/* <span className="menu-icon"><i className="bi bi-list"></i></span> */}
         
-        <nav className="menu--right mobileVisible" role="navigation">
+        <nav className="menu--right-nav mobileVisible" role="navigation">
           <div className="menuToggle">
             <input type="checkbox" id="hamburg" onChange={stopScroll}/>
-            <span></span>
-            <span></span>
-            <span></span>
+            <span className="hamburg"></span>
+            <span className="hamburg"></span>
+            <span className="hamburg"></span>
             <ul className="menuItem">
-              <li><Link to="/" onClick={()=>{stopScroll}}>Home</Link></li>
-              <li><Link to="/cart" onClick={()=>{stopScroll}}>Cart</Link></li>
-              <li><Link to="/hot Deals/results" onClick={(e)=>{e.preventDefault(),getSectionProds("Hot Deals"),navigate("/hot%Deals/results")}}>Hot Deals</Link></li>
+              <li><Link to="/" onClick={(e)=>{e.preventDefault(),getSectionProds("/"),navigate("/")}}>Home</Link></li>            
+              <li><Link to="/hot Deals/results" onClick={(e)=>{e.preventDefault(),getSectionProds("Hot Deals"),navigate("/hot%20Deals/results")}}>Hot Deals</Link></li>
               <li><Link to="/categories/results" onClick={(e)=>{e.preventDefault(),getSectionProds("Categories"),navigate("/categories/results")}}>Categories</Link></li>
-              <li><a href="#">Show me more</a></li>
+              <li><Link to="/latest/results" onClick={(e)=>{e.preventDefault(),getSectionProds("Latest"),navigate("/latest/results")}}>Latest</Link></li>
+              <li><Link to="" onClick={(e)=>{e.preventDefault(),getSectionProds("/"),searchOnProduct()}}>Search For Product</Link></li>
+              <li><Link to="/cart" onClick={(e)=>{e.preventDefault(),getSectionProds("/"),navigate("/cart")}}>Cart</Link></li>
+              <li><Link to="/wishlist" onClick={(e)=>{e.preventDefault(),getSectionProds("/"),navigate("/wishlist")}}>Wishlist</Link></li>
+              {isUserLogin != null ? (
+                <>
+                {console.log(isUserLogin[0])}
+                  <li> <Link to="" onClick={(e)=>{e.preventDefault(),getSectionProds("/"),navigate("/profile/"+isUserLogin[0].id)}} className="userInfoMobile">
+                      <img className="w-100 h-100 obj-cover userIN" src={isUserLogin[0].image_url} alt="profile image" />
+                      <p>{isUserLogin[0]?.fullName[0].toUpperCase() + isUserLogin[0]?.fullName.slice(1)}</p>   
+                    </Link></li>
+                  <li><Link to="" onClick={(e)=>{e.preventDefault(),getSectionProds("/"),navigate("/dashboard/products")}}>Dashboard</Link></li>
+                  <li><Link to="" onClick={(e)=>{e.preventDefault(),getSectionProds("/"),logout()}}>Logout</Link></li>
+                </>
+              ):(
+                <li><Link to="" className="userIN" onClick={(e)=>{e.preventDefault(),getSectionProds("/"),navigate("/auth")}}> 
+                  SignIn           
+                </Link></li>
+              )}
             </ul>
           </div>
         </nav>

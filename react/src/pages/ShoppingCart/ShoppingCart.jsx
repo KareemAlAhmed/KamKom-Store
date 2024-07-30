@@ -15,7 +15,6 @@ const ShoppingCart = () => {
     const [items, setItems] = useState([]);
     const [total, setTotal] = useState(0);
     const [showToast, setShowToast] = useState(false);
-    // const [isCartEmpty, SetIsCartEmpty] = useState(true);
     let isCartEmpty =false;
     const currentUserId=useSelector(state=>state.users.currentUserId)
     const purchaseSuccessed=useSelector(state=>state.users.purchaseSuccessed)
@@ -30,8 +29,12 @@ const ShoppingCart = () => {
     useEffect(() => {
         setItems(JSON.parse(sessionStorage.getItem("user-cart")));
         getTotal(JSON.parse(sessionStorage.getItem("user-cart")));
+        console.log(document.querySelector("body").offsetWidth)
     }, []);
-
+    const isMobileVersion=()=>{
+        let body=document.querySelector("body")
+        return body.offsetWidth < 480;
+    }
     const incQty = (item) => {
         dispatch(ADD_PROD_TO_CART(currentUserId,item.id,item));
 
@@ -64,13 +67,13 @@ const ShoppingCart = () => {
         items?.map((item, index) => {
             if (item?.id === id) {
                 items.splice(index, 1);
-                localStorage.setItem("cart", JSON.stringify(items));
-                setItems(JSON.parse(localStorage.getItem("cart")));
+                sessionStorage.setItem("user-cart", JSON.stringify(items));
+                setItems(JSON.parse(sessionStorage.getItem("user-cart")));
             }
         });
-        getTotal();
-        if (JSON.parse(localStorage.getItem("cart"))?.length == 0) {
-            SetIsCartEmpty(true);
+        getTotal(items);
+        if (JSON.parse(sessionStorage.getItem("user-cart"))?.length == 0) {
+            isCartEmpty=true;
         }
     };
 
@@ -119,7 +122,6 @@ const ShoppingCart = () => {
 
                             <div className="cartItems">
                                 {items?.map((item, index) => (
-                                    console.log(item),
                                     <div key={index} className="cartItem">
                                         
                                         <span
@@ -137,7 +139,7 @@ const ShoppingCart = () => {
                                             />
                                         </div>
                                         <div className="itemDetails">
-                                            <p>{item?.name}</p>
+                                            <p>{isMobileVersion ? item?.name.length > 78 ?  item?.name.slice(0,78)+"..." : item?.name : item?.name}</p>
                                         </div>
                                         <div>Price : {item?.price}$</div>
                                         <div className="itemQty">

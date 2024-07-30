@@ -16,27 +16,15 @@ export function registeringUser(){
     }
 }
 export function registeringUserSuccuessed(user){
-    let cart=[];
-    let oldCart=user.cart[1]
-    for(let i =0;i<oldCart.length;i++){
-        let item={
-            id:parseInt(oldCart[i][0]),
-            name:oldCart[i][1],
-            price:oldCart[i][2],
-            quantity:oldCart[i][3],
-            images_url:oldCart[i][4],
-        }
-        cart.push(item)
-    }
-    let wishProdId=[]
-    let list=JSON.parse(user.wishlist.productIds)
-    list.map(ele=>wishProdId.push(ele.id))
-    sessionStorage.setItem("wishProdsId",JSON.stringify(wishProdId))
-    sessionStorage.setItem("user-cart",JSON.stringify(cart))
+
+    sessionStorage.setItem("user-auth",JSON.stringify(user.user))
+    sessionStorage.setItem("user-wishlist",JSON.stringify([]))
+    sessionStorage.setItem("wishProdsId",JSON.stringify([]))
+    sessionStorage.setItem("user-cart",JSON.stringify([]))
 
     return{
         type:REGISTERING_USER_SUCCESS,
-        payload:user
+        payload:{user:user.user,cart:[],}
     }
 }
 export function registeringUserFailed(error){
@@ -108,7 +96,6 @@ function addingProductToCartSuccess(cart,item,wantedQut){
     }
     prodInCart ? null : prods.push(item);
     sessionStorage.setItem("user-cart", JSON.stringify(prods));
-    console.log("hi there")
     toast.success("The Item Added To The Cart", {
         position: "top-right",
         autoClose: 3000,
@@ -344,9 +331,8 @@ export function registerUSer(data){
         .then(re=>
           {  console.log(re),
             dispatch(registeringUserSuccuessed(re.data))
-            sessionStorage.setItem("user-auth",JSON.stringify(re.data.user))
-        // sessionStorage.setItem("user-wishlist",re.data.wishlist.productIds)
-            sessionStorage.setItem("user-wishlist",JSON.stringify(re.data.wishlist.productIds))}
+
+        }
 
     )
         .catch(err=>{console.log(err),dispatch(registeringUserFailed(err.response.data.error.email[0]))})

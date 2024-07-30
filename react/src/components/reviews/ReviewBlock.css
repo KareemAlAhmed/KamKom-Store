@@ -140,3 +140,16 @@ input[type=number] {
 .editRev{
     margin: 15px 0;
 }
+
+@media (max-width: 480px) {
+    .addReview{
+        margin-bottom: 10px;
+    }
+    .reviewBlock .reviewContent textarea{
+        height: 100px;
+        font-size: 19px;
+    }
+    .allReviews h1{
+        font-size: 20px;
+    }
+}

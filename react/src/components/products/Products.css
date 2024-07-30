@@ -29,6 +29,13 @@
     }
     .sectionTitle{
         margin: 0;
-        padding-bottom: 12.5px;
+        padding-bottom: 10px;
+        font-size: 22px;
+    }
+    .browseMore{
+        font-size: 22px;
+    }
+    .productDetailsPage .sectionTitle,.productDetailsPage .browseMore{
+        font-size: 20px;
     }
 }
