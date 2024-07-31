@@ -1,9 +1,8 @@
-// import { json } from "react-router-dom";
+
 import { Bounce, toast } from "react-toastify";
-import { ADDING_PRODUCT_TO_CART, ADDING_PRODUCT_TO_CART_FAILED, ADDING_PRODUCT_TO_CART_SUCCESSED, DELETE_USER, DELETE_USER_FAILED, DELETE_USER_SUCCESSED, FETCH_USER_INFO, FETCH_USER_INFO_FAILED, FETCH_USER_INFO_SUCCESSED, FOLLOW_USER, FOLLOW_USER_FAILED, FOLLOW_USER_SUCCESSED, GET_ALL_PURCHASES, GET_ALL_PURCHASES_FAILED, GET_ALL_PURCHASES_SUCCESSED, GET_ALL_USERS, GET_ALL_USERS_FAILED, GET_ALL_USERS_SUCCESSED, GET_USER, LOGIN_USER, LOGIN_USER_FAILED, LOGIN_USER_SUCCESS, LOGOUT_USER, PURCHASE_CART_FAILED, PURCHASE_CART_SUCCESSED, PURCHASING_CART, REGISTERING_USER, REGISTERING_USER_FAILED, REGISTERING_USER_SUCCESS, UNFOLLOW_USER, UNFOLLOW_USER_FAILED, UNFOLLOW_USER_SUCCESSED } from "./actionsType";
+import { ADDING_PRODUCT_TO_CART, ADDING_PRODUCT_TO_CART_FAILED, ADDING_PRODUCT_TO_CART_SUCCESSED, CANCEL_REQUEST, CANCEL_REQUEST_FAILED, CANCEL_REQUEST_SUCCESSED, DELETE_USER, DELETE_USER_FAILED, DELETE_USER_SUCCESSED, FETCH_USER_INFO, FETCH_USER_INFO_FAILED, FETCH_USER_INFO_SUCCESSED, FOLLOW_USER, FOLLOW_USER_FAILED, FOLLOW_USER_SUCCESSED, GET_ALL_PURCHASES, GET_ALL_PURCHASES_FAILED, GET_ALL_PURCHASES_SUCCESSED, GET_ALL_USERS, GET_ALL_USERS_FAILED, GET_ALL_USERS_SUCCESSED, GET_USER, LOGIN_USER, LOGIN_USER_FAILED, LOGIN_USER_SUCCESS, LOGOUT_USER, PURCHASE_CART_FAILED, PURCHASE_CART_SUCCESSED, PURCHASING_CART, REGISTERING_USER, REGISTERING_USER_FAILED, REGISTERING_USER_SUCCESS, REQUEST_MONEY, REQUEST_MONEY_FAILED, REQUEST_MONEY_SUCCESSED, UNFOLLOW_USER, UNFOLLOW_USER_FAILED, UNFOLLOW_USER_SUCCESSED, VERIFY_CODE, VERIFY_CODE_FAILED, VERIFY_CODE_SUCCESSED } from "./actionsType";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
-import { getProducts } from "../product/productAction";
+
 
 export function get_user(){
     return{
@@ -297,11 +296,6 @@ function deleteUserSuccessed(id){
         sessionStorage.setItem("allProds",JSON.stringify(newAllProds))
     }
 
-
-
-
-
-
     toast.success("The User Deleted Successfully", {
         position: "top-right",
         autoClose: 3000,
@@ -324,6 +318,128 @@ function deleteUserFailed(error){
         payload:error
     }
 }
+
+function requestMoney(){
+    return{
+        type:REQUEST_MONEY
+    }
+}
+function requestMoneySuccessed(){
+
+    toast.success("A Code Has Been Sent To Your Email.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce
+        });
+    return{
+        type:REQUEST_MONEY_SUCCESSED,
+    }
+}
+function requestMoneyFailed(){
+    toast.error("Error While Sending The Code!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce
+        });
+    return{
+        type:REQUEST_MONEY_FAILED,
+    }
+}
+function verifyCode(){
+    return{
+        type:VERIFY_CODE
+    }
+}
+function verifyCodeSuccessed(balance){
+    let user=JSON.parse(sessionStorage.getItem("user-auth"));
+    user[0].balance=balance;
+    sessionStorage.setItem("user-auth",JSON.stringify(user))
+    toast.success("The Money Has Been Added Successfuly.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce
+    });
+    return{
+        type:VERIFY_CODE_SUCCESSED,
+        payload:user
+    }
+}
+export function verifyCodeFailed(canceled =false){
+    if(!canceled){
+        toast.error("Invalid Code!!", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Bounce
+            });
+    }
+    return{
+        type:VERIFY_CODE_FAILED,
+    }
+}
+function cancelRequest(){
+    return{
+        type:CANCEL_REQUEST
+    }
+}
+function cancelRequestSuccessed(){
+    toast.success("Money Request Has Been Cancel.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce
+        });
+    return{
+        type:CANCEL_REQUEST_SUCCESSED,
+    }
+}
+function cancelRequestFailed(){
+    
+        toast.error("Error While Canceling The Request!!", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Bounce
+            });
+    
+    return{
+        type:CANCEL_REQUEST_FAILED,
+    }
+}
+
 export function registerUSer(data){
     return function(dispatch){
         dispatch(registeringUser());
@@ -472,3 +588,41 @@ export function DELETE_USR(id){
         })
     }
 }
+export function REQUEST_MONEYS(id,amount){
+    return function(dispatch){
+        dispatch(requestMoney())
+        axios.post("http://127.0.0.1:8000/api/user/"+id+"/addMoney",{amount})
+        .then(()=>{
+            dispatch(requestMoneySuccessed())
+        })
+        .catch(()=>{
+            dispatch(requestMoneyFailed())
+        })
+    }
+}
+export function VERIFY_CODES(id,code){
+    console.log(code)
+    return function(dispatch){
+        dispatch(verifyCode())
+        axios.put("http://127.0.0.1:8000/api/user/"+id+"/checkCode",{code})
+        .then((res)=>{
+            dispatch(verifyCodeSuccessed(res.data.newBalance))
+        })
+        .catch(()=>{
+            dispatch(verifyCodeFailed())
+        })
+    }
+}
+export function CANCEL_REQUESTS(id){
+    return function(dispatch){
+        dispatch(cancelRequest())
+        axios.delete("http://127.0.0.1:8000/api/user/"+id+"/cancelRequest")
+        .then(()=>{
+            dispatch(cancelRequestSuccessed())
+        })
+        .catch(()=>{
+            dispatch(cancelRequestFailed())
+        })
+    }
+}
+

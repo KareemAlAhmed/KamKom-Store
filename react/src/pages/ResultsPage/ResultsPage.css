@@ -375,7 +375,7 @@
   }
   
   @media (max-width: 1088px) {
-    #menu .icon-wrapper, #menu .line-v, #menu .icon, #menu .img-wrapper {
+    #menu .icon-wrapper, #menu .line-v, #menu .img-wrapper {
       display: none;
     }
   }

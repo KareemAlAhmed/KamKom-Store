@@ -1,5 +1,5 @@
 
-import { GET_USER,REGISTERING_USER,REGISTERING_USER_SUCCESS,REGISTERING_USER_FAILED, LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_FAILED, ADDING_PRODUCT_TO_CART, ADDING_PRODUCT_TO_CART_SUCCESSED, ADDING_PRODUCT_TO_CART_FAILED, PURCHASING_CART, PURCHASE_CART_SUCCESSED, PURCHASE_CART_FAILED, LOGOUT_USER, FETCH_USER_INFO, FETCH_USER_INFO_SUCCESSED, FETCH_USER_INFO_FAILED, FOLLOW_USER, FOLLOW_USER_SUCCESSED, FOLLOW_USER_FAILED, UNFOLLOW_USER, UNFOLLOW_USER_SUCCESSED, UNFOLLOW_USER_FAILED, GET_ALL_PURCHASES, GET_ALL_PURCHASES_SUCCESSED, GET_ALL_PURCHASES_FAILED, GET_ALL_USERS, GET_ALL_USERS_SUCCESSED, GET_ALL_USERS_FAILED, DELETE_USER, DELETE_USER_SUCCESSED, DELETE_USER_FAILED } from "./actionsType";
+import { GET_USER,REGISTERING_USER,REGISTERING_USER_SUCCESS,REGISTERING_USER_FAILED, LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_FAILED, ADDING_PRODUCT_TO_CART, ADDING_PRODUCT_TO_CART_SUCCESSED, ADDING_PRODUCT_TO_CART_FAILED, PURCHASING_CART, PURCHASE_CART_SUCCESSED, PURCHASE_CART_FAILED, LOGOUT_USER, FETCH_USER_INFO, FETCH_USER_INFO_SUCCESSED, FETCH_USER_INFO_FAILED, FOLLOW_USER, FOLLOW_USER_SUCCESSED, FOLLOW_USER_FAILED, UNFOLLOW_USER, UNFOLLOW_USER_SUCCESSED, UNFOLLOW_USER_FAILED, GET_ALL_PURCHASES, GET_ALL_PURCHASES_SUCCESSED, GET_ALL_PURCHASES_FAILED, GET_ALL_USERS, GET_ALL_USERS_SUCCESSED, GET_ALL_USERS_FAILED, DELETE_USER, DELETE_USER_SUCCESSED, DELETE_USER_FAILED, REQUEST_MONEY, REQUEST_MONEY_SUCCESSED, REQUEST_MONEY_FAILED, VERIFY_CODE, VERIFY_CODE_SUCCESSED, VERIFY_CODE_FAILED, CANCEL_REQUEST, CANCEL_REQUEST_SUCCESSED, CANCEL_REQUEST_FAILED } from "./actionsType";
 
 
 const initalState={
@@ -17,6 +17,7 @@ const initalState={
     currentViewedUserError:"",
     allPurchases:JSON.parse(sessionStorage.getItem("all-purchases")),
     allUsers:JSON.parse(sessionStorage.getItem("all-users")),
+    requestMoneySuccessed:false,
    
 }
 
@@ -228,6 +229,58 @@ const userReducer=(state=initalState,action)=>{
                     allUsers:[]
                 }
             
+                case REQUEST_MONEY:
+                return {
+                    ...state,
+                    // loading:true,
+                }
+            case REQUEST_MONEY_SUCCESSED:
+                return {
+                    ...state,
+                    loading:true,
+                    requestMoneySuccessed:true,
+                }
+            case REQUEST_MONEY_FAILED:
+                return {
+                    ...state,
+                    loading:true,
+                    requestMoneySuccessed:false,
+                }
+                case VERIFY_CODE:
+                return {
+                    ...state,
+                    loading:true,
+                }
+            case VERIFY_CODE_SUCCESSED:
+                return {
+                    ...state,
+                    loading:false,
+                    currentUser:action.payload,
+                    requestMoneySuccessed:false,
+                }
+            case VERIFY_CODE_FAILED:
+                return {
+                    ...state,
+                    loading:false,
+                    requestMoneySuccessed:true,
+                }
+                case CANCEL_REQUEST:
+                return {
+                    ...state,
+                    loading:true,
+                }
+            case CANCEL_REQUEST_SUCCESSED:
+                return {
+                    ...state,
+                    loading:false,
+                    requestMoneySuccessed:false,
+                }
+            case CANCEL_REQUEST_FAILED:
+                return {
+                    ...state,
+                    loading:false,
+                    requestMoneySuccessed:true,
+                }
 
         default: return state
     }

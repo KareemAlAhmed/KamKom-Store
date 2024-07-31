@@ -354,7 +354,7 @@
     .tabs{
       font-size: 15px;
     }
-    .roter + div{
+    .userIntro + div{
       flex-direction: column;
     }
   }
@@ -421,7 +421,7 @@
     background-color: rgba(4, 111, 226, 0.1490196078);
   }
   @media (max-width: 1088px) {
-    #menu .icon-wrapper, #menu .line-v, #menu .icon, #menu .img-wrapper {
+    #menu .icon-wrapper, #menu .line-v, #menu .img-wrapper {
       display: none;
     }
   }

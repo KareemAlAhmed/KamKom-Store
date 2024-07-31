@@ -5,8 +5,8 @@
 
 use App\Models\Product;
 
-$firstPartAdd=explode(",",$buyer->streetAddress)[0];
-$secondPartAdd=explode(",",$buyer->streetAddress)[1];
+$firstPartAdd=$buyer->streetAddress;
+
 
 ?> 
 
@@ -270,7 +270,7 @@ $secondPartAdd=explode(",",$buyer->streetAddress)[1];
                   <tr>
                     <td align="left" valign="top" style="padding-bottom: 36px; padding-left: 36px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
                       <p><strong>Delivery Address</strong></p>
-                      <p style="padding-right: 35px;">{{$firstPartAdd}}<br>{{$secondPartAdd}}</p>
+                      <p style="padding-right: 35px;">{{$firstPartAdd}}</p>
                     </td>
                   </tr>
                 </table>
@@ -284,7 +284,7 @@ $secondPartAdd=explode(",",$buyer->streetAddress)[1];
                   <tr>
                     <td align="left" valign="top" style="padding-bottom: 36px; padding-left: 36px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
                       <p><strong>Billing Address</strong></p>
-                      <p style="padding-right: 35px;">{{$firstPartAdd}}<br>{{$secondPartAdd}}</p>
+                      <p style="padding-right: 35px;">{{$firstPartAdd}}<br></p>
                     </td>
                   </tr>
                 </table>

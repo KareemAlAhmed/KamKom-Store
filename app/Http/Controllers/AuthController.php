@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\verifyCode;
 use App\Models\BoughtItems;
 use App\Models\Cart;
+use App\Models\Code;
 use App\Models\Product;
 use App\Models\SoldItems;
 use App\Models\User;
@@ -11,6 +13,7 @@ use App\Models\WishList;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator as FacadesValidator;
 use PHPUnit\Framework\Constraint\IsEmpty;
 
@@ -42,11 +45,11 @@ class AuthController extends Controller
             ],402);
         }else{
             $user=new User();
-            $user->fullName=$request['firstName'] . " " . $request['secondName'];
+            $user->FullName=$request['firstName'] . " " . $request['secondName'];
             if(isset($request['bio'])){
                 $user->bio=$request['bio'];
             }else{
-                $user->bio="Hey there, fellow KamKom shopper! I'm " . $user->fullName .", and I've got some really cool stuff for you here at KamKom Store.";
+                $user->bio="Hey there, fellow KamKom shopper! I'm " . $user->FullName .", and I've got some really cool stuff for you here at KamKom Store.";
             }
             $user->email=$request['email'];
             $user->password=bcrypt($request['password']);
@@ -61,7 +64,11 @@ class AuthController extends Controller
             //     $user->image_url=$request->image_url->getClientOriginalName();   
             //     $request->image_url->storeAs('public/UserProfilePic',$user->image_url);
             // }
-            $user->image_url= $request["image_url"];
+            if($request["image_url"] == null){
+                $user->image_url="http://res.cloudinary.com/dgo3fuaxg/image/upload/v1721929948/bhucqryzr7yrlr3lzuh2.jpg";
+            }else{
+                $user->image_url= $request["image_url"];
+            }
 
             $current_time = date("Y-m-d H:i:s");
             $user->email_verified_at=$current_time;
@@ -181,11 +188,11 @@ class AuthController extends Controller
                     'error'=>$val->messages()
                 ],402);
             }else{
-                $user->fullName=$request['firstName'] . " " . $request['secondName'];
+                $user->FullName=$request['firstName'] . " " . $request['secondName'];
                 if(isset($request['bio'])){
                     $user->bio=$request['bio'];
                 }else{
-                    $user->bio="Hey there, fellow KamKom shopper! I'm " . $user->fullName .", and I've got some really cool stuff for you here at KamKom Store.";
+                    $user->bio="Hey there, fellow KamKom shopper! I'm " . $user->FullName .", and I've got some really cool stuff for you here at KamKom Store.";
                 }
                 $user->email=$request['email'];
                 $user->password=bcrypt($request['password']);
@@ -316,7 +323,7 @@ class AuthController extends Controller
             $user->update();
             return response()->json([
                 "status"=>200,
-                "message"=>"The User " . $user->fullName ." Is Admin Now"
+                "message"=>"The User " . $user->FullName ." Is Admin Now"
             ]);
         }else{
             return response()->json([
@@ -325,4 +332,104 @@ class AuthController extends Controller
             ],404);
         }
     }
+    function addMoneyToUser($id,Request $request){
+        $user=User::find($id);
+        if(!isset($user)){
+            return response()->json([
+                'status'=>404,
+                'error'=>"The User Doesnt Exist."
+            ],404);
+        }
+        if($request["amount"] == null || $request["amount"] <= 0){
+            return response()->json([
+                'status'=>404,
+                'error'=>"Invalid Amount."
+            ],404);
+        }
+        $moenyRequest=Code::where("user_id",$id)->first();
+        if(isset($moenyRequest)){
+            return response()->json([
+                'status'=>404,
+                'error'=>"A Code Has Already Been Sent To Your Email."
+            ],404);
+        }
+        $code=$this->generateUniqueCode();
+        $requestAmount= new Code();
+        $requestAmount->user_id=$user->id;
+        $requestAmount->code=$code;
+        $requestAmount->amount=(float)$request["amount"];
+        $requestAmount->save();
+
+        Mail::to("karimahmad2172@gmail.com")->send(new verifyCode($user,$code));
+        return response()->json([
+            "status"=>200,
+            "code"=>$code
+        ]);
+    }
+    function verifyCode($id,Request $request){
+        $user=User::find($id);
+        if(!isset($user)){
+            return response()->json([
+                'status'=>404,
+                'error'=>"The User Doesnt Exist."
+            ],404);
+        }
+        $moneyRequest=Code::where("user_id",$id)->first();
+        $code=$moneyRequest->code;
+        if($code == $request["code"]){
+            $user->balance += $moneyRequest->amount;
+            $user->save();
+            $moneyRequest->delete();
+            return response()->json([
+                "status"=>200,
+                "newBalance"=>$user->balance
+            ],200); 
+        }else{
+            return response()->json([
+                "status"=>404,
+                "error"=>"Wrong Code!!"
+            ],404); 
+        }
+    }
+    function cancelMoneyRequest($id){
+        $user=User::find($id);
+        if(!isset($user)){
+            return response()->json([
+                'status'=>404,
+                'error'=>"The User Doesnt Exist."
+            ],404);
+        }
+        $moneyRequest=Code::where("user_id",$id)->first();
+        if(isset($moneyRequest)){
+            $moneyRequest->delete();
+            return response()->json([
+                "status"=>200,
+            ],200); 
+        }else{
+            return response()->json([
+                "status"=>404,
+                "error"=>"No Request Founded!"
+            ],404); 
+        }
+    }
+
+    public function generateUniqueCode()
+{
+
+    $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersNumber = strlen($characters);
+    $codeLength = 6;
+
+    $code = '';
+
+    while (strlen($code) < 6) {
+        $position = rand(0, $charactersNumber - 1);
+        $character = $characters[$position];
+        $code = $code.$character;
+    }
+
+
+    return $code;
+
+}
 }

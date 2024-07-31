@@ -176,10 +176,21 @@ box-shadow: 10014px 0 0 -5px;
       transition: all 0.3s ease;
       
     }
-    .menuToggle a:hover {
-      color: tomato;
-    }
-  
+    /* .menuToggle a:hover {
+      color: var(--blue-color);
+    } */
+  .menu--right-nav .menuItem li a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .menu--right-nav .menuItem li a svg{
+    width: 25px;
+    height: 25px;
+  }
+  .menu--right-nav .menuItem li:first-child svg,.menu--right-nav .menuItem li:nth-child(7) svg,.menu--right-nav .menuItem li:last-child svg{
+    fill: white;
+  }
     .menuToggle #hamburg {
       display: block;
       width: 40px;
@@ -265,9 +276,9 @@ box-shadow: 10014px 0 0 -5px;
     margin: -100px 0 0 0;
     transform: translate(100%, 0);
   }
-  .menu--right-nav .menuItem li a:hover {
+  /* .menu--right-nav .menuItem li a:hover {
     padding-left: 5px;
-  }
+  } */
   .stopScroll{
       height:100%;
       overflow:hidden

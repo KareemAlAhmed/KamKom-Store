@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FOLLOW_USER_REQ, GET_USER_INFO, UNFOLLOW_USER_REQ } from "../../../redux/user/userAction";
 import ResultCard from "../../components/resultsContainer/resultCard/ResultCard";
+import { ToastContainer } from "react-toastify";
 export default function UserPage() {
     const filterTitle =document.querySelectorAll(".filter-wrapper .title")
     const tabsContainer = document.getElementById("tabs-wraperr");
@@ -166,7 +167,7 @@ export default function UserPage() {
     <>
       <Navbar />
     <section className="main mainUser">
-      <div className="roter">
+      <div className="roter userIntro">
         <p>Home</p>
         <i className="bi bi-chevron-compact-right"></i>
         <p>Profile</p>
@@ -180,6 +181,7 @@ export default function UserPage() {
           <span className="options"> <i className="bi bi-gift-fill"></i></span>
           <span className="options"><i className="bi bi-hand-thumbs-up-fill"></i>
           </span>
+
           <div className="img-wrapper userImg">
             <img src={user?.image_url} alt="" />
           </div>
@@ -336,6 +338,7 @@ export default function UserPage() {
 
     </section>
     <Footer />
+    <ToastContainer />
     </>
   )
 }

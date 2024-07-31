@@ -43,6 +43,9 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('user/{id}/listed_items','get_listed_items');
     Route::get('users','all');
     Route::put('user/makeAdmin/{userId}','makeAdmmin');
+    Route::post('user/{userId}/addMoney','addMoneyToUser');
+    Route::put('user/{userId}/checkCode','verifyCode');
+    Route::delete('user/{userId}/cancelRequest','cancelMoneyRequest');
 });
 
 Route::controller(ProductController::class)->group(function () {

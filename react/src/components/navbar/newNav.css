@@ -349,17 +349,50 @@ header {
 .coin {
   display: flex;
   gap: 0.5rem;
-  padding: 0.5rem 1.5rem;
+  /* padding: 0.5rem 1.5rem; */
   background-color: rgba(102, 147, 194, 0.137254902);
   color: #5ea8f8;
   border-radius: 2rem;
   font-size: 0.8rem;
   align-items: center;
+  position: relative;
+  cursor: pointer;
 }
 .coin .icon {
   color: #5ea8f8;
 }
 
+.moneyInfo{
+  display: flex;
+    gap: 0.5rem;
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    align-items: center;
+}
+.moneyInfo:hover > p{
+  text-decoration: underline;
+}
+.amountOfMoney{
+  display: flex;
+  flex-direction: column;
+}
+.addMoney select{
+  width: 100%;
+  border: 1px solid var(--select-border);
+  border-radius: 0.25em;
+  padding: 2px 5px;
+  font-size: 15px;
+  cursor: pointer;
+  background-color: var(--back-color);
+  color: #5ea8f8;
+  margin: 2px 0;
+  margin-bottom: 5px;
+}
+.addMoney button{
+  padding: 10px 20px !important;
+}
 .search {
   display: flex;
   align-items: center;
@@ -502,5 +535,73 @@ header {
   font-weight: 600;
   font-size: 25px;
 }
+.addMoney{
+  position: absolute;
+    top: 100%;
+    background-color: rgb(102 147 194 / 21%);
+    width: 100%;
+    left: 0;
+    right: 0;
+    padding: 8px 17px;
+}
 
+.hideAddMoney{
+  display: none;
+}
+.fixStyle{
+  border-radius:0;
+  border-bottom: 1px solid #3e76db5c;
+}
+.verifyCode{
+  display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.verifyCode input{
+  font-size: 16px;
+  outline: none;
+}
+.requestActions{
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.requestActions button:last-of-type{
+  background-color: red !important;
+}
+.sending{
+  background-color: transparent !important;
+  border: 2px solid !important;
+  font-weight: 600;
+}
+.moneyAndOpts{
+  display: flex;
+  align-items: center;
+  color: var(--blue-color)
+}
+.moneyAndOpts i,.moneyAndOpts p{
+  color: var(--blue-color);
+}
+.addMoneyMobileV{
+  /* background-color: rgba(102, 147, 194, 0.137254902); */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: all 0.3s ease;
+}
 
+.addMoneyMobileV .amountOfMoney select{
+  background-color: white;
+  color: var(--blue-color);
+  font-weight: 600;
+}
+.addMoneyMobileV .amountOfMoney select option:hover{
+  background-color: var(--cart-color);
+}
+.addMoneyMobileV .amountOfMoney{
+  gap: 2px;
+}
+.hide-elemment{
+  height: 0px;
+  overflow: hidden;
+}

@@ -67,7 +67,7 @@ class UsersSeeder extends Seeder
         // fclose($file);
         foreach($users as $name){
             $user=new User();
-            $user->fullName=$name;
+            $user->FullName=$name;
             $user->bio="Hey there, fellow KamKom shopper! I'm " . $name .", and I've got some really cool stuff for you here at KamKom Store.";
             $user->email= str_replace(' ', '', $name)."@gmail.com";
             $user->password=bcrypt("81258136");
@@ -81,7 +81,7 @@ class UsersSeeder extends Seeder
             $user->email_verified_at=$current_time;
             $user->save();
             $token=$user->createToken('myapptoken')->plainTextToken;
-            $id=User::where("fullName",$name)->first()->id;
+            $id=User::where("FullName",$name)->first()->id;
             $cart=new CartController();
             $cart->create($id);
             $wishlist=new WishListController();

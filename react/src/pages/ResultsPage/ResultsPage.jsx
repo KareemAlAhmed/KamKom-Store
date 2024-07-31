@@ -4,6 +4,7 @@ import Footer from '../../components/footer/Footer';
 import "./ResultsPage.css"
 import ResultsContainer from '../../components/resultsContainer/ResultsContainer';
 import { useParams } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 export default function ResultsPage() {
     const page = useParams()?.item;
     const subpage = useParams()?.subitem;
@@ -14,6 +15,7 @@ export default function ResultsPage() {
             <SideBarFilter />
             <ResultsContainer for={page} subitem={subpage}/>
             </div>
+            <ToastContainer />
         <Footer />
     </>
   )
