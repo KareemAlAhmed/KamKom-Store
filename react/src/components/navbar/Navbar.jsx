@@ -33,7 +33,8 @@ const Navbar = () => {
             state: productToSearchOn,
         });
     };
-    useEffect(()=>{ let block=document.querySelectorAll(".header #menu .userIN");let mainblock=document.querySelector(".header #menu #userIn");
+    useEffect(()=>{ 
+      let block=document.querySelectorAll(".header #menu .userIN");let mainblock=document.querySelector(".header #menu #userIn");
       block.forEach(ele=>{
         ele.addEventListener("mouseenter", () => {
           const dropdownMenu = mainblock.querySelector(".dropdown-menu");

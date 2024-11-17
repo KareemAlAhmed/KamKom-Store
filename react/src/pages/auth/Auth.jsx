@@ -13,6 +13,7 @@ import { Navigate } from "react-router-dom";
 import { LoginUser, registerUSer } from "../../../redux/user/userAction";
 import UploadWidget from "../../cloudinary";
 import { Bounce, toast } from "react-toastify";
+
 const formSchemaRegister = Yup.object({
     firstName: Yup.string().required("Firstname is required"),
     secondName: Yup.string().required("secondName is required"),
